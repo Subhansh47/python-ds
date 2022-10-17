@@ -1,0 +1,12 @@
+import numpy as np 
+
+np.random.seed(4)
+
+a = np.random.randint(10, size=(4, 3, 3))
+ind = a[:,:,0].argsort()
+ind = np.stack(a.shape[2]*[ind], axis=1)
+b = np.take_along_axis(a.transpose(0, 2, 1), ind, axis=2).transpose(0, 2, 1)
+
+print(a)
+print("----------------")
+print(b)
